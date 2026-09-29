@@ -22,7 +22,9 @@ export function EditorControls({ text, settings, overflow, onTextChange, onSetti
       preset: preset.id,
       font: preset.font,
       fontSize: preset.fontSize,
+      italic: preset.italic,
       align: preset.align,
+      horizontalPosition: preset.horizontalPosition,
       verticalPosition: preset.verticalPosition,
       lineHeight: preset.lineHeight,
     })
@@ -83,6 +85,13 @@ export function EditorControls({ text, settings, overflow, onTextChange, onSetti
         onChange={(value) => update('font', value)}
       />
 
+      <SegmentedControl<'on' | 'off'>
+        label="Cursiva"
+        value={settings.italic ? 'on' : 'off'}
+        options={[{ value: 'on', label: 'On' }, { value: 'off', label: 'Off' }]}
+        onChange={(value) => update('italic', value === 'on')}
+      />
+
       <label className="control-group range-control">
         <span><span>Tamaño</span><output>{settings.fontSize}px</output></span>
         <input type="range" min="40" max="180" step="2" value={settings.fontSize} onChange={(e) => update('fontSize', Number(e.target.value))} />
@@ -96,7 +105,7 @@ export function EditorControls({ text, settings, overflow, onTextChange, onSetti
       />
 
       <label className="control-group range-control">
-        <span><span>Posición vertical</span><output>{settings.verticalPosition}%</output></span>
+        <span><span>Posición vertical</span><output>{Math.round(settings.verticalPosition)}%</output></span>
         <input type="range" min="10" max="90" step="1" value={settings.verticalPosition} onChange={(e) => update('verticalPosition', Number(e.target.value))} />
       </label>
     </section>

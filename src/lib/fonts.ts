@@ -1,8 +1,14 @@
 import '@fontsource/dm-sans/latin-400.css'
+import '@fontsource/dm-sans/latin-400-italic.css'
 import '@fontsource/dm-sans/latin-500.css'
 import '@fontsource/italiana/latin-400.css'
 
-const REQUIRED_FONTS = ['400 16px "DM Sans"', '500 16px "DM Sans"', '400 16px "Italiana"']
+const REQUIRED_FONTS = [
+  '400 16px "DM Sans"',
+  'italic 400 16px "DM Sans"',
+  '500 16px "DM Sans"',
+  '400 16px "Italiana"',
+]
 
 export async function ensureFontsLoaded(): Promise<void> {
   if (!document.fonts) throw new Error('Este navegador no permite verificar la carga de fuentes.')

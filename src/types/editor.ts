@@ -10,7 +10,9 @@ export interface EditorSettings {
   background: Background
   font: FontFamily
   fontSize: number
+  italic: boolean
   align: TextAlign
+  horizontalPosition: number
   verticalPosition: number
   lineHeight: number
   preset: PresetId

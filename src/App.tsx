@@ -25,6 +25,9 @@ function App() {
 
   const format = FORMATS[settings.format]
   const handleOverflow = useCallback((value: boolean) => setOverflow(value), [])
+  const handlePositionChange = useCallback((horizontalPosition: number, verticalPosition: number) => {
+    setSettings((current) => ({ ...current, horizontalPosition, verticalPosition }))
+  }, [setSettings])
 
   const handleExport = async () => {
     if (!canvasRef.current || !fontsReady) return
@@ -81,6 +84,7 @@ function App() {
               settings={settings}
               fontsReady={fontsReady}
               onOverflow={handleOverflow}
+              onPositionChange={handlePositionChange}
             />
           </div>
 
